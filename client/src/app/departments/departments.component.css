@@ -1,0 +1,35 @@
+.table-container {
+    width: 55%;
+    margin: auto;
+    
+}
+
+.button-container {
+    width: 50%;
+    height: 50px;
+    margin: auto;
+
+}
+
+.btn-warning {
+    background-color: rgb(255, 161, 30);
+    color: white;
+    margin-bottom: 0px;
+    float: right;
+    padding: 5px;
+    text-transform: none;
+
+}
+
+.btn-primary{
+    margin-right: 10px;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.btn-danger {
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}

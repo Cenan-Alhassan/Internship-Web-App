@@ -1,0 +1,72 @@
+<app-departments-popup></app-departments-popup>
+
+<div class="button-container">
+    <button type="button" class="btn btn-warning" (click)="openChildPopup(false)">
+
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" style="fill: white;" viewBox="0 0 24 24">
+            <path d="M 12 2 C 6.4889971 2 2 6.4889971 2 12 C 2 17.511003 6.4889971 22 12 22 C 17.511003 22 22 17.511003 22 12 C 22 6.4889971 17.511003 2 12 2 z M 12 4 C 16.430123 4 20 7.5698774 20 12 C 20 16.430123 16.430123 20 12 20 C 7.5698774 20 4 16.430123 4 12 C 4 7.5698774 7.5698774 4 12 4 z M 11 7 L 11 11 L 7 11 L 7 13 L 11 13 L 11 17 L 13 17 L 13 13 L 17 13 L 17 11 L 13 11 L 13 7 L 11 7 z"></path>
+        </svg>
+
+        Add Department
+    </button>
+</div>
+
+
+<div class="table-container shadow-sm py-1" style="background-color: rgb(255, 161, 30);">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">N of Employees</th>
+        <th scope="col">Manager</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (department of pagedDepartments; track $index) {
+            <tr>
+                <th scope="row">{{(page - 1) * pageSize + $index + 1}}</th>
+                <td>{{department.department}}</td>
+                <td>{{department.numOfEmployee}}</td>
+                <td>{{department.manager}}</td>
+                <td>
+
+                  <div style="width: 50%; margin: auto;">
+                    <button type="button" class="btn btn-primary opacity-75" (click)="openChildPopup(true, department.id, department.department)">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 24 24" style="fill: white;">
+                          <path d="M 18 2 L 15.585938 4.4140625 L 19.585938 8.4140625 L 22 6 L 18 2 z M 14.076172 5.9238281 L 3 17 L 3 21 L 7 21 L 18.076172 9.9238281 L 14.076172 5.9238281 z"></path>
+                        </svg>
+                      </button>
+            
+                      <button type="button" class="btn btn-danger opacity-75" (click)="deleteDepartment(department.id)">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 30 30" style="fill:#FFFFFF;">
+                          <path d="M 14.984375 2.4863281 A 1.0001 1.0001 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1.0001 1.0001 0 0 0 7.4863281 5 L 6 5 A 1.0001 1.0001 0 1 0 6 7 L 24 7 A 1.0001 1.0001 0 1 0 24 5 L 22.513672 5 A 1.0001 1.0001 0 0 0 21.5 4 L 16 4 L 16 3.5 A 1.0001 1.0001 0 0 0 14.984375 2.4863281 z M 6 9 L 7.7929688 24.234375 C 7.9109687 25.241375 8.7633438 26 9.7773438 26 L 20.222656 26 C 21.236656 26 22.088031 25.241375 22.207031 24.234375 L 24 9 L 6 9 z"></path>
+                        </svg>
+                      </button>
+                  </div>
+
+
+                </td>
+              </tr>
+
+        }
+      
+    </tbody>
+  </table>
+
+
+</div>
+<div class="table-container d-flex justify-content-between p-2" style="margin-top: 20px;">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshDepartments()">
+
+    </ngb-pagination>
+
+    <select class="form-select" style="width: 150px" [(ngModel)]="pageSize" (ngModelChange)="refreshDepartments()">
+		<option [ngValue]="4">4 items per page</option>
+		<option [ngValue]="6">6 items per page</option>
+		<option [ngValue]="8">8 items per page</option>
+	</select>
+</div>
+
+
