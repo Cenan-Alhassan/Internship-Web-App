@@ -5,5 +5,6 @@ import { DepartmentsComponent } from './departments/departments.component';
 export const routes: Routes = 
 [
     {path: "employees", component: EmployeesComponent},
+    {path: "", component: EmployeesComponent},
     {path: "departments", component: DepartmentsComponent}
 ];

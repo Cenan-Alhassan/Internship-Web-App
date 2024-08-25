@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for hrapp on 2024-08-25T16:49:06+03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'hrapp'
+primary_region = 'cdg'
+
+[env]
+ASPNETCORE_URLS="http://+:8080"
+
+[build]
+  image = 'docker.io/cenan452/hrapp:latest'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1

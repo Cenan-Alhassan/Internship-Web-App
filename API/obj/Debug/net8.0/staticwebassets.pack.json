@@ -1,0 +1,69 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\3rdpartylicenses.txt",
+      "PackagePath": "staticwebassets\\3rdpartylicenses.txt"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\main-TQZ6IIUI.js",
+      "PackagePath": "staticwebassets\\main-TQZ6IIUI.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\media\\fontawesome-webfont-3KIJVIEY.svg",
+      "PackagePath": "staticwebassets\\media\\fontawesome-webfont-3KIJVIEY.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\media\\fontawesome-webfont-5GKVPAEF.woff2",
+      "PackagePath": "staticwebassets\\media\\fontawesome-webfont-5GKVPAEF.woff2"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\media\\fontawesome-webfont-FMJ3VJ65.eot",
+      "PackagePath": "staticwebassets\\media\\fontawesome-webfont-FMJ3VJ65.eot"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\media\\fontawesome-webfont-RJ6LE7IU.ttf",
+      "PackagePath": "staticwebassets\\media\\fontawesome-webfont-RJ6LE7IU.ttf"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\media\\fontawesome-webfont-Z4ARLA73.woff",
+      "PackagePath": "staticwebassets\\media\\fontawesome-webfont-Z4ARLA73.woff"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\polyfills-N6LQB2YD.js",
+      "PackagePath": "staticwebassets\\polyfills-N6LQB2YD.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\scripts-RI2FKH4X.js",
+      "PackagePath": "staticwebassets\\scripts-RI2FKH4X.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive\\Desktop\\Web applicatioins\\HrApp\\API\\wwwroot\\styles-RBFVBJKB.css",
+      "PackagePath": "staticwebassets\\styles-RBFVBJKB.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.API.props",
+      "PackagePath": "build\\API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.API.props",
+      "PackagePath": "buildMultiTargeting\\API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.API.props",
+      "PackagePath": "buildTransitive\\API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

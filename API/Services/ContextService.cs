@@ -11,57 +11,33 @@ namespace API.Services
 {
     public class ContextService : IContextService
     {
-        public void ConfigureNumOfEmployeesDepartmentsAndManagers (DataContext context)
+        public void ConfigureNumOfEmployeesDepartmentsAndManagers(DataContext context)
+{
+    // Load all departments and employees in a single query
+    var departments = context.Departments.ToList();
+    var employees = context.Employees.Where(x => !x.IsDeleted).ToList();
+
+    foreach (var department in departments)
+    {
+        var departmentName = department.Department;
+        var numOfEmployees = employees.Count(e => e.Department == departmentName);
+        var manager = employees
+            .Where(e => e.Department == departmentName && e.Type == EmployeeLevel.Manager)
+            .Select(e => e.Name)
+            .FirstOrDefault() ?? "none";
+
+        department.NumOfEmployee = numOfEmployees;
+        department.Manager = manager;
+    }
+
+    foreach (var employee in employees)
+    {
+        if (!departments.Any(d => d.Department == employee.Department && !d.IsDeleted))
         {
-
-            foreach(var departmentEntity in context.Departments)
-            {
-                var DepartmentName = departmentEntity.Department;
-                var NumOfEmployee = 0;
-                string Manager = "none";
-
-                foreach (var employee in context.Employees.Where(x=> x.Department == DepartmentName && x.IsDeleted == false))
-                {
-                    // increment for every employee in department
-                    NumOfEmployee++;
-
-                    // find the manager of the department
-                    if (employee.Type == EmployeeLevel.Manager)
-                    {
-                        Manager = employee.Name;
-                    }
-
-                    
-                }
-                
-
-
-                // DepartmentEntity department = context.Departments.FirstOrDefault(x=> x.Department == DepartmentName)
-                // ?? throw new Exception("Cannot configure number of employees for non-existant department.");
-
-                departmentEntity.NumOfEmployee = NumOfEmployee;
-                departmentEntity.Manager = Manager;
-                context.SaveChanges();
-
-            }
-
-            // set employee department to none if department no longer exists or was edited away 
-            foreach (var employee in context.Employees)
-                {
-                    var departmentName = "none";
-                    
-                    foreach (var department in context.Departments.Where(x=> x.IsDeleted == false))
-                    {
-                        if (employee.Department == department.Department)
-                        {
-                            departmentName = department.Department;
-                        }
-                    }
-
-                    employee.Department = departmentName;
-                    context.SaveChanges();
-                }
+            employee.Department = "none";
         }
+    }
+}
 
         public bool CheckIfManagerExists (DataContext context, EmployeeDto employeeDto, int Id)
         {

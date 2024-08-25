@@ -1,8 +1,10 @@
 .table-container {
-    width: 55%;
+    width:55%;
     margin: auto;
     
 }
+
+
 
 .button-container {
     width: 50%;
@@ -10,6 +12,26 @@
     margin: auto;
 
 }
+
+
+@media screen and (max-width: 820px){
+    .table-container {
+        width:92%;
+        margin: auto;
+        
+    }
+
+    .button-container {
+        width: 50%;
+        height: 50px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+      justify-content: center;
+    }
+
+}
+
 
 .btn-warning {
     background-color: rgb(255, 161, 30);
@@ -32,4 +54,22 @@
     padding: 3px;
     padding-left: 5px;
     padding-right: 5px;
+}
+
+#table-btn-div {
+    width: 50%; 
+    margin: auto;
+}
+
+@media screen and (max-width: 1300px){
+    #table-btn-div {
+        width: 70%; 
+        margin: auto;
+    }
+}
+@media screen and (max-width: 1000px){
+    #table-btn-div {
+        width: 90%; 
+        margin: auto;
+    }
 }

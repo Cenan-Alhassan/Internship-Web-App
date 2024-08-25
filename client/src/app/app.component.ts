@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.toastr.info("This is an app where you can perform HTTP requests on two tables to see how they affect eachother. (Click to close)",
        "Welcome!", {timeOut: 0, extendedTimeOut: 0, closeButton: true});
-       this.toastr.info("Cenan Alhassan. You can find my links printed on the console.",
+       this.toastr.info("Cenan Alhassan. https://github.com/Cenan-Alhassan",
        "Made by:", {timeOut: 0, extendedTimeOut: 0, closeButton: true});
   }
 }

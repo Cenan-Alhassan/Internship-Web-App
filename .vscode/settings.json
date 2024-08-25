@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/374dd477-2538-4164-ab6a-f1c4475c5a7a/resourceGroups/Internship-resource-group/providers/Microsoft.Web/sites/cenans-internship-app",
+    "appService.deploySubpath": "API\\bin\\Publish"
+}

@@ -13,6 +13,7 @@ namespace API.Controllers
 {
     public class EmployeesController(DataContext context, IContextService contextService) : BaseController
     {
+        
 
         [HttpGet("getdel")]
         public async Task<ActionResult<IEnumerable<EmployeeEntity>>> GetAllllEmployees() {
@@ -20,6 +21,37 @@ namespace API.Controllers
             return await context.Employees.ToListAsync();
 
         }
+
+        [HttpGet("populate")]
+        public string Populate() {
+            
+            var employees = context.Employees.Where(x => x.IsDeleted == false).ToList();
+            var departments = context.Employees.Where(x => x.IsDeleted == false).ToList();
+            if (employees.Count > 0 && departments.Count > 0)
+            {
+                return "Database is populated";
+            }
+            else
+            {
+                EmployeeEntity employeeEntity = new EmployeeEntity {
+                    Name = "Jon",
+                    Department = "Software",
+                    Type = EmployeeLevel.Manager
+                };
+
+                DepartmentEntity departmentEntity = new DepartmentEntity {
+                    Department = "Software",
+                    NumOfEmployee = 1,
+                    Manager = "Jon"
+                };
+
+                context.Employees.Add(employeeEntity);
+                context.Departments.Add(departmentEntity);
+                context.SaveChanges();
+
+                return "Database has been populated";
+            }
+        } 
 
         [HttpGet("restore")]
         public async Task<ActionResult<IEnumerable<EmployeeEntity>>> Restore() {
@@ -41,6 +73,27 @@ namespace API.Controllers
 
             return await context.Employees.Where(x => x.IsDeleted == false).ToListAsync();
 
+        }
+
+        [HttpPost("freepost")]
+        public async Task<ActionResult<IEnumerable<EmployeeEntity>>> Free(EmployeeDto employeeDto)
+        {
+
+
+            var newEmployee = new EmployeeEntity 
+            {
+                Name = employeeDto.Name,
+                Type = employeeDto.Type,
+                Department = employeeDto.Department
+            };
+
+
+            context.Employees.Add(newEmployee);
+        
+            await context.SaveChangesAsync();
+
+
+            return await context.Employees.Where(x=> x.IsDeleted == false).ToListAsync();
         }
 
         [HttpPost("post")]

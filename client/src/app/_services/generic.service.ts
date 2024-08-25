@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 export interface IDepartments {
 	id?: number;
@@ -21,7 +22,7 @@ export interface IEmployees {
 })
 export class GenericService {
 
-  baseUrl: string = "https://localhost:5021/api/"
+  baseUrl: string = "api/"
   employeesDatabaseSignal = signal<any>(null)
   public employeeToBeEditedID = signal<number | null>(null)
 

@@ -32,6 +32,27 @@ namespace API.Controllers
 
         }
 
+        [HttpPost("freepost")]
+        public async Task<ActionResult<IEnumerable<DepartmentEntity>>> Free(DepartmentDto DepartmentDto)
+        {
+
+            var newDepartment = new DepartmentEntity 
+            {
+                Department = DepartmentDto.Department,
+                Manager = DepartmentDto.Manager,
+                NumOfEmployee = 0
+            };
+
+            context.Departments.Add(newDepartment);
+
+            await context.SaveChangesAsync();
+
+
+            return await context.Departments.Where(x => x.IsDeleted == false).ToListAsync();
+        }
+
+
+
         [HttpPost("post")]
         public async Task<ActionResult<IEnumerable<DepartmentEntity>>> Post(DepartmentDto DepartmentDto)
         {
@@ -72,19 +93,20 @@ namespace API.Controllers
 
 
         [HttpDelete("delete/{id}")]
-        public async Task<ActionResult<IEnumerable<DepartmentEntity>>> DeleteDepartment(int id) 
-        {
-            DepartmentEntity DepartmentToBeDeleted = await context.Departments.FindAsync(id) 
-            ?? throw new Exception("Given ID does not exist");
+        public async Task<ActionResult<IEnumerable<DepartmentEntity>>> DeleteDepartment(int id)
+{
+    DepartmentEntity departmentToBeDeleted = await context.Departments.FindAsync(id)
+        ?? throw new Exception("Given ID does not exist");
 
-            DepartmentToBeDeleted.IsDeleted = true;
-            
-            contextService.ConfigureNumOfEmployeesDepartmentsAndManagers(context);
-            await context.SaveChangesAsync();
+    departmentToBeDeleted.IsDeleted = true;
 
-            return await context.Departments.Where(x => x.IsDeleted == false).ToListAsync();
+    contextService.ConfigureNumOfEmployeesDepartmentsAndManagers(context);
 
-        }
+    await context.SaveChangesAsync();
+
+    return await context.Departments.Where(x => x.IsDeleted == false).ToListAsync();
+}
+
 
 
         [HttpPut("put/{id}")]
